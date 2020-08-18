@@ -7,13 +7,13 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        keys:
+          keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run: yarn
       - save_cache:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
-              - ~/.cache/yarn
+            - ~/.cache/yarn
       - run:
           name: lint
           command: yarn lint
