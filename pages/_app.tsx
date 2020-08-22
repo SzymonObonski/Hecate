@@ -1,9 +1,16 @@
-/* eslint-disable react/prop-types,react/jsx-props-no-spreading */
-import '../styles/globals.css';
 import React from 'react';
+import { AppProps } from 'next/app';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+import { ThemeProvider } from 'styled-components';
+import { theme, GlobalStyles } from '@styles';
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }
 
 export default MyApp;

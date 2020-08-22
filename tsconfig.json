@@ -19,7 +19,9 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@components/content": ["components/content"]
+      "@components/content": ["components/content"],
+      "@components/molecules": ["components/molecules"],
+      "@styles": ["styles"]
     }
   },
   "include": [
