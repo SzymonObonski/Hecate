@@ -1,11 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
 import { Logo } from '@assets';
 
 const StyledNav = styled.nav`
     width: 100%;
     background-color: ${({ theme }) => theme.color.white};
-    box-shadow: 0 0 10px 0 ${({ theme }) => transparentize(0.9, theme.color.black)};
+    
+    ${({ isScrolled }) => isScrolled
+    && css`
+        position: fixed;
+        box-shadow: 0 0 10px 0 ${({ theme }) => transparentize(0.9, theme.color.black)};
+    `
+}
 `;
 
 const StyledNavList = styled.ul`
@@ -14,19 +20,35 @@ const StyledNavList = styled.ul`
     margin: 0 auto;
     list-style: none;
     display: flex;
+    align-items: center;
 `;
 
 const StyledNavItem = styled.li`
-    display: block;
+    display: flex;
+    cursor: pointer;
+    
+    &:first-child {
+      margin-right: auto;
+    }
 `;
 
 const StyledLink = styled.a`
     padding: 1rem 1.2rem;
     display: block;
+    border-bottom: 2px solid transparent;
+    transition: .4s border-color;
+    
+    &:hover {
+      border-color: ${({ theme }) => theme.color.darken};
+    }
+    
+    ${({ isActive }) => isActive
+      && css`border-color: ${({ theme }) => theme.color.darken};`
+}
 `;
 
 const StyledLogo = styled(Logo)`
-  width: 2.5rem;
+  width: 3rem;
   height: auto;
 `;
 
