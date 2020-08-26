@@ -1,25 +1,70 @@
 version: 2.1
-jobs:
-  build:
+
+executors:
+  node:
     working_directory: ~/repo
     docker:
       - image: circleci/node:12.18.3
+
+commands:
+  restorecache:
+    description: "Loads yarn package cache"
     steps:
-      - checkout
       - restore_cache:
+          name: "Restore Yarn Package Cache"
           keys:
             - yarn-packages-{{ checksum "yarn.lock" }}
-      - run: yarn
+  savecache:
+    description: "Saves yarn packages to cache"
+    steps:
       - save_cache:
+          name: "Save Yarn Package Cache"
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run:
-          name: lint
-          command: yarn lint
-      - run:
-          name: build
-          command: yarn build
-          filters:
-            branches:
-              only: master
+
+jobs:
+  checkout_code:
+    executor: node
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - .
+
+  run_linter:
+    executor: node
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - restorecache
+      - run: yarn
+      - savecache
+      - run: yarn lint
+
+  build_statics:
+    executor: node
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - restorecache
+      - run: yarn
+      - savecache
+      - run: yarn build
+      - persist_to_workspace:
+          root: ~/repo
+          paths:
+            - public
+
+workflows:
+  version: 2.1
+  build-and-deploy:
+    jobs:
+      - checkout_code
+      - run_linter:
+          requires:
+            - checkout_code
+      - build_statics:
+          requires:
+            - checkout_code
