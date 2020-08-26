@@ -12,6 +12,8 @@ import {
   StyledLogo,
   StyledHamburgerButton,
   StyledHamburgerRib,
+  StyledNavContainer,
+  StyledGHLogo,
 } from './Navigation.styles';
 
 const Navigation = () => {
@@ -24,34 +26,43 @@ const Navigation = () => {
   const { home, quiz } = paths;
   return (
     <StyledNav isScrolled={scrollY > 55}>
-      <StyledNavList>
-        <StyledNavItem>
-          <Link href={home}>
+      <StyledNavContainer>
+        <Link href={home}>
+          <a>
             <StyledLogo />
-          </Link>
-        </StyledNavItem>
-        <StyledNavItem>
-          <Link href={home}>
-            <StyledLink isActive={router.pathname === home}>
-              Home
-            </StyledLink>
-          </Link>
-        </StyledNavItem>
-        <StyledNavItem>
-          <Link href={quiz}>
-            <StyledLink isActive={router.pathname === quiz}>
-              Quiz
-            </StyledLink>
-          </Link>
-        </StyledNavItem>
-      </StyledNavList>
+          </a>
+        </Link>
 
-      <StyledHamburgerButton onClick={toggleMenu}>
-        <StyledHamburgerRib isOpen={isMenuOpen} />
-        <StyledHamburgerRib isOpen={isMenuOpen} />
-        <StyledHamburgerRib isOpen={isMenuOpen} />
-        <StyledHamburgerRib isOpen={isMenuOpen} />
-      </StyledHamburgerButton>
+        <StyledNavList isOpen={isMenuOpen}>
+          <StyledNavItem>
+            <Link href={home}>
+              <StyledLink isActive={router.pathname === home}>
+                Home
+              </StyledLink>
+            </Link>
+          </StyledNavItem>
+          <StyledNavItem>
+            <Link href={quiz}>
+              <StyledLink isActive={router.pathname === quiz}>
+                Quiz
+              </StyledLink>
+            </Link>
+          </StyledNavItem>
+          <StyledNavItem>
+            <StyledLink target="_blank" href="https://github.com/SzymonObonski/Hecate">
+              <StyledGHLogo />
+            </StyledLink>
+          </StyledNavItem>
+        </StyledNavList>
+
+        <StyledHamburgerButton onClick={toggleMenu}>
+          <StyledHamburgerRib isOpen={isMenuOpen} />
+          <StyledHamburgerRib isOpen={isMenuOpen} />
+          <StyledHamburgerRib isOpen={isMenuOpen} />
+          <StyledHamburgerRib isOpen={isMenuOpen} />
+        </StyledHamburgerButton>
+      </StyledNavContainer>
+
     </StyledNav>
   );
 };

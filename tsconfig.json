@@ -23,7 +23,7 @@
       "@components/molecules": ["components/molecules"],
       "@styles": ["styles"],
       "@utils": ["utils"],
-      "@assets": ["assets"]
+      "@assets/svg": ["assets/svg"]
     }
   },
   "include": [
