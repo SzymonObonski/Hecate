@@ -59,7 +59,7 @@ jobs:
 
 workflows:
   version: 2.1
-  build-and-deploy:
+  build:
     jobs:
       - checkout_code
       - run_linter:
