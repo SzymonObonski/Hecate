@@ -52,6 +52,68 @@ const StyledLogo = styled(Logo)`
   height: auto;
 `;
 
+const StyledHamburgerButton = styled.div`
+  width: 3.75rem;
+  height: 3rem;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  cursor: pointer;
+`;
+
+const StyledHamburgerRib = styled.span`
+  display: block;
+  position: absolute;
+  height: 0.56rem;
+  width: 100%;
+  background: ${({ theme }) => theme.color.darken};
+  border-radius: 0.56rem;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+  
+  &:nth-child(1) {
+    top: 0;
+  }
+  
+  &:nth-child(2), &:nth-child(3) {
+    top: 1.125rem;
+  }
+  
+  &:nth-child(4) {
+    top: 2.25rem;
+  }
+  
+  ${({ isOpen }) => isOpen
+  && css`
+    &:nth-child(1) {
+      top: 1.125rem;
+      width: 0;
+      left: 50%;
+    }
+    
+    &:nth-child(2){
+      transform: rotate(45deg);
+    }
+
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+
+    &:nth-child(4) {
+      top: 1.125rem;
+      width: 0;
+      left: 50%;
+    }
+`}
+`;
+
 export {
-  StyledNav, StyledNavList, StyledNavItem, StyledLink, StyledLogo,
+  StyledNav,
+  StyledNavList,
+  StyledNavItem,
+  StyledLink,
+  StyledLogo,
+  StyledHamburgerButton,
+  StyledHamburgerRib,
 };

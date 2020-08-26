@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import useScrollPosition from '@react-hook/window-scroll';
 
 import { paths } from '@utils';
 import {
-  StyledNav, StyledNavList, StyledNavItem, StyledLink, StyledLogo,
+  StyledNav,
+  StyledNavList,
+  StyledNavItem,
+  StyledLink,
+  StyledLogo,
+  StyledHamburgerButton,
+  StyledHamburgerRib,
 } from './Navigation.styles';
 
 const Navigation = () => {
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const scrollY = useScrollPosition();
-
   const router = useRouter();
+
+  const toggleMenu = () => setMenuOpen(!isMenuOpen);
 
   const { home, quiz } = paths;
   return (
@@ -37,6 +45,13 @@ const Navigation = () => {
           </Link>
         </StyledNavItem>
       </StyledNavList>
+
+      <StyledHamburgerButton onClick={toggleMenu}>
+        <StyledHamburgerRib isOpen={isMenuOpen} />
+        <StyledHamburgerRib isOpen={isMenuOpen} />
+        <StyledHamburgerRib isOpen={isMenuOpen} />
+        <StyledHamburgerRib isOpen={isMenuOpen} />
+      </StyledHamburgerButton>
     </StyledNav>
   );
 };
