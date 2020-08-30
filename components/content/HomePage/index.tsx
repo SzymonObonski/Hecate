@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { theme } from '@styles';
+import { paths } from '@utils';
 import {
   StyledLandingSection,
   StyledAboutSection,
@@ -10,6 +11,7 @@ import {
   StyledBlock,
   StyledBlockNumber,
   StyledBlockText,
+  StyledLink,
 } from './HomePage.styles';
 
 // const steps = [''];
@@ -19,6 +21,8 @@ const HomePage = () => {
   const secondLineRef = useRef(null);
   const thirdLineRef = useRef(null);
   const fourthLineRef = useRef(null);
+
+  const { home } = paths;
 
   useEffect(() => {
     gsap
@@ -41,6 +45,12 @@ const HomePage = () => {
             <span ref={thirdLineRef}>Retake.</span>
             <span ref={fourthLineRef}>Succeed.</span>
           </StyledHeading>
+          <StyledSectionTitle>Fill the form & test your knowledge.</StyledSectionTitle>
+          <StyledLink href={home}>
+            <a>
+              Check now!
+            </a>
+          </StyledLink>
         </StyledContainer>
 
       </StyledLandingSection>

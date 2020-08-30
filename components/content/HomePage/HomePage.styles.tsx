@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import Link from 'next/link';
 
 const sectionStyles = css`
   width: 100%;
@@ -20,6 +21,8 @@ const StyledContainer = styled.div`
   padding: 0.5rem ${({ theme }) => theme.layout.padding};
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 `;
 
@@ -27,17 +30,31 @@ const StyledHeading = styled.h1`
   font-size: 5rem;
   transition: color 1s linear;
   display: flex;
-  flex-direction: column;
+  height: fit-content;
+  margin-top: 13rem;
+  margin-bottom: 2rem;
   
   > span {
-    margin-top: 1rem;
+    margin-left: 1.5rem;
     color: ${({ theme }) => theme.color.quinary};
     opacity: 0;
+    display: block;
+    
+    &:first-child {
+      margin-left: 0;
+    }
   }
 
 `;
 
-const StyledSectionTitle = styled.h2``;
+const StyledSectionTitle = styled.h2`
+  font-size: 2rem;
+
+`;
+
+const StyledLink = styled(Link)`
+  
+`;
 const StyledBlock = styled.div``;
 const StyledBlockNumber = styled.span``;
 const StyledBlockText = styled.p``;
@@ -51,4 +68,5 @@ export {
   StyledBlock,
   StyledBlockNumber,
   StyledBlockText,
+  StyledLink,
 };
