@@ -5,12 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "lint": "eslint \"pages/**/*.tsx\"",
+    "lint": "eslint \"pages/**/*.tsx\" && yarn stylelint",
+    "stylelint": "stylelint \"pages/**/*.tsx\"",
     "lint:fix": "eslint --fix \"pages/**/*.tsx\"",
     "start": "next start"
   },
   "dependencies": {
     "@react-hook/window-scroll": "^1.3.0",
+    "gsap": "^3.5.1",
     "next": "9.5.2",
     "polished": "^3.6.5",
     "react": "16.13.1",
@@ -33,6 +35,10 @@
     "eslint-plugin-react": "^7.20.6",
     "eslint-plugin-react-hooks": "^4.1.0",
     "husky": "^4.2.5",
+    "stylelint": "^13.6.1",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
     "typescript": "^3.9.7"
   },
   "husky": {

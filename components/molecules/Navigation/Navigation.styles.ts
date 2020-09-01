@@ -5,7 +5,8 @@ import { Logo, GithubLogo } from '@assets/svg';
 const StyledNav = styled.nav`
   width: 100%;
   background-color: ${({ theme }) => theme.color.white};
-
+  z-index: 1;
+  
   ${({ isScrolled }) => isScrolled
     && css`
       position: fixed;
@@ -68,12 +69,12 @@ const StyledLink = styled.a`
   height: 3.5rem;
   
   &:hover {
-    border-color: ${({ theme }) => theme.color.darken};
+    border-color: ${({ theme }) => theme.color.quinary};
   }
 
   ${({ isActive }) => isActive
     && css`
-      border-color: ${({ theme }) => theme.color.darken};
+      border-color: ${({ theme }) => theme.color.quinary};
     `}
 `;
 
@@ -108,7 +109,7 @@ const StyledHamburgerRib = styled.span`
   position: absolute;
   height: 0.25rem;
   width: 100%;
-  background: ${({ theme }) => theme.color.darken};
+  background: ${({ theme }) => theme.color.quinary};
   border-radius: 0.56rem;
   opacity: 1;
   left: 0;
