@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import Link from 'next/link';
 
 const sectionStyles = css`
   width: 100%;
@@ -14,6 +13,11 @@ const StyledLandingSection = styled.section`
 
 const StyledAboutSection = styled.section`
   ${sectionStyles}
+  flex-direction: column;
+  max-width: ${({ theme }) => theme.layout.gridWidth};
+  padding: 0.5rem ${({ theme }) => theme.layout.padding};
+  align-items: center;
+  margin: 0 auto;
 `;
 
 const StyledContainer = styled.div`
@@ -47,17 +51,43 @@ const StyledHeading = styled.h1`
 
 `;
 
-const StyledSectionTitle = styled.h2`
+const StyledSubHeader = styled.h2`
   font-size: 2rem;
-
+  margin-bottom: 3rem;
 `;
 
-const StyledLink = styled(Link)`
-  
+const StyledSectionTitle = styled.h2`
+  font-size: 3rem;
 `;
-const StyledBlock = styled.div``;
-const StyledBlockNumber = styled.span``;
-const StyledBlockText = styled.p``;
+const StyledBlockContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  grid-gap: 0.5rem;
+
+  ${({ theme }) => theme.mq.medium} {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+  }
+`;
+
+const StyledBlock = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledBlockNumber = styled.span`
+  font-size: 2.5rem;
+  font-weight: ${({ theme }) => theme.font.weight.bold};
+`;
+
+const StyledBlockTitle = styled.h3`
+  margin: 0.5rem 0;
+`;
+
+const StyledBlockText = styled.p`
+  font-family: ${({ theme }) => theme.font.family.secondary};
+`;
 
 export {
   StyledLandingSection,
@@ -65,8 +95,10 @@ export {
   StyledContainer,
   StyledHeading,
   StyledSectionTitle,
+  StyledBlockContainer,
   StyledBlock,
   StyledBlockNumber,
+  StyledBlockTitle,
   StyledBlockText,
-  StyledLink,
+  StyledSubHeader,
 };
