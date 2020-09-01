@@ -9,6 +9,11 @@ const sectionStyles = css`
 const StyledLandingSection = styled.section`
   ${sectionStyles}
   background-color: ${({ theme }) => theme.color.light};
+  padding: 2rem 0;
+  
+  ${({ theme }) => theme.mq.medium} {
+    padding: 0;
+  }
 `;
 
 const StyledAboutSection = styled.section`
@@ -34,21 +39,30 @@ const StyledHeading = styled.h1`
   font-size: 5rem;
   transition: color 1s linear;
   display: flex;
+  flex-direction: column;
   height: fit-content;
-  margin-top: 13rem;
+  margin-top: 0;
   margin-bottom: 2rem;
   
   > span {
-    margin-left: 1.5rem;
     color: ${({ theme }) => theme.color.quinary};
     opacity: 0;
     display: block;
+    transform: translate(-2rem,0);
+  }
+  
+  ${({ theme }) => theme.mq.medium} {
+    flex-direction: row;
+    margin-top: 13rem;
     
-    &:first-child {
-      margin-left: 0;
+    > span {
+      margin-left: 1.5rem;
+      
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
-
 `;
 
 const StyledSubHeader = styled.h2`
@@ -57,17 +71,19 @@ const StyledSubHeader = styled.h2`
 `;
 
 const StyledSectionTitle = styled.h2`
-  font-size: 3rem;
+  font-size: 4rem;
+  margin: 5rem 0;
 `;
 const StyledBlockContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
   grid-gap: 0.5rem;
+  margin-bottom: 2rem;
 
   ${({ theme }) => theme.mq.medium} {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1rem;
+    grid-gap: 2.5rem;
   }
 `;
 

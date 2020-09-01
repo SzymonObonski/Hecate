@@ -5,7 +5,8 @@ import { Logo, GithubLogo } from '@assets/svg';
 const StyledNav = styled.nav`
   width: 100%;
   background-color: ${({ theme }) => theme.color.white};
-
+  z-index: 1;
+  
   ${({ isScrolled }) => isScrolled
     && css`
       position: fixed;

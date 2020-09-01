@@ -41,7 +41,7 @@ const HomePage = () => {
   useEffect(() => {
     gsap
       .timeline({
-        defaults: { duration: 0.7, opacity: 1, x: 32 },
+        defaults: { duration: 0.7, opacity: 1, x: 0 },
       })
       .to(firstLineRef.current, {})
       .to(secondLineRef.current, { color: theme.color.primary })
