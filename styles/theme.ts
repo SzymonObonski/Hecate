@@ -34,13 +34,13 @@ const font = {
 
 const layout = {
   padding: '1rem',
+  gridWidth: '75rem',
 };
 
 const theme = {
-  layout,
   color,
   font,
-  gridWidth: '75rem',
+  layout,
   breakpoints,
   mq: Object.keys(breakpoints).reduce((acc, breakpoint) => {
     acc[breakpoint] = `@media (min-width: ${breakpoints[breakpoint]}px)`;
