@@ -1,14 +1,6 @@
-import React, { ReactNode } from 'react';
-import { Navigation } from '@components/molecules';
+import React from 'react';
 
-interface LayoutProps {
-    children: ReactNode;
-}
-
-const Layout = ({ children }: LayoutProps) => (
-  <>
-    <Navigation />
-    <main>{children}</main>
-  </>
+const Layout = ({ children }) => (
+  <main>{children}</main>
 );
 export default Layout;

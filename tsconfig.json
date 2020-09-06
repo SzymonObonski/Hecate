@@ -21,9 +21,7 @@
     "paths": {
       "@components/content": ["components/content"],
       "@components/molecules": ["components/molecules"],
-      "@styles": ["styles"],
-      "@utils": ["utils"],
-      "@assets/svg": ["assets/svg"]
+      "@styles": ["styles"]
     }
   },
   "include": [

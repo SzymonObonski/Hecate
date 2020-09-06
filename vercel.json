@@ -1,7 +1,0 @@
-{
-  "name": "hecate",
-  "version": 1,
-  "env": {
-    "MONGODB_URI": "@mongodb-uri"
-  }
-}
