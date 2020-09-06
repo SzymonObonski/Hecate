@@ -1,5 +1,25 @@
 import React from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
+import { Technology, Level } from '@models/quiz';
+
+interface Dropdown {
+  label: string;
+  value: Technology | Level;
+}
+
+const technologies : Dropdown[] = [
+  { label: 'JavaScript', value: 'javascript' },
+  { label: 'React', value: 'react' },
+  { label: 'Css', value: 'css' },
+  { label: 'HTML', value: 'html' },
+  { label: 'Angular', value: 'angular' },
+];
+
+const levels: Dropdown[] = [
+  { label: 'Junior', value: 'junior' },
+  { label: 'Regular', value: 'regular' },
+  { label: 'Senior', value: 'senior' },
+];
 
 const Questionnaire = () => {
   const { register, control, handleSubmit } = useForm();
@@ -7,21 +27,27 @@ const Questionnaire = () => {
     control,
     name: 'items',
   });
+  const isMaximumFields = fields.length >= 5;
 
   return (
     <form onSubmit={handleSubmit(console.log)}>
       {fields.map(({
-        id, type,
+        id, tech, level,
       }, index) => (
         <div key={id}>
           <select
             ref={register()}
-            name={`items[${index}].type`}
-            defaultValue={type}
+            name={`items[${index}].tech`}
+            defaultValue={tech}
           >
-            <option value="">Select</option>
-            <option value="10">ItemA</option>
-            <option value="20">ItemB</option>
+            {technologies.map((dropdownTechnology) => <option value={dropdownTechnology.value}>{dropdownTechnology.label}</option>)}
+          </select>
+          <select
+            ref={register()}
+            name={`items[${index}].level`}
+            defaultValue={level}
+          >
+            {levels.map((dropdownLevel) => <option value={dropdownLevel.value}>{dropdownLevel.label}</option>)}
           </select>
           <button type="button" onClick={() => remove(index)}>
             Remove
@@ -29,10 +55,10 @@ const Questionnaire = () => {
         </div>
       ))}
 
-      <input type="submit" />
-      <button type="button" onClick={() => append({})}>
+      <button type="button" onClick={() => append({})} disabled={isMaximumFields}>
         Append
       </button>
+      <input type="submit" />
     </form>
   );
 };

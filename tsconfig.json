@@ -22,7 +22,8 @@
       "@components/*": ["components/*"],
       "@styles": ["styles"],
       "@utils": ["utils"],
-      "@assets/svg": ["assets/svg"]
+      "@assets/svg": ["assets/svg"],
+      "@models/*": ["models/*"]
     }
   },
   "include": [

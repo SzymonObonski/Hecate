@@ -1,5 +1,5 @@
-type Level = "junior" | "regular" | "senior";
-type Technology = "javascript" | "react" | "css" | "html" | "angular";
+export type Level = "junior" | "regular" | "senior";
+export type Technology = "javascript" | "react" | "css" | "html" | "angular";
 
 export interface QuestionnaireForm {
     tech: Technology;
