@@ -1,5 +1,5 @@
-const url = require('url');
-const { MongoClient } = require('mongodb');
+import * as url from 'url';
+import { MongoClient } from 'mongodb';
 
 let cachedDb = null;
 
