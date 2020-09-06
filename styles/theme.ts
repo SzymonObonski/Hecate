@@ -9,9 +9,11 @@ const color = {
   white: '#ffffff',
   black: '#000000',
   light: '#f3f3f3',
-  primary: '#d1002c',
-  secondary: '#fff5ed',
-  darken: '#0f0f13',
+  primary: '#FF0022',
+  secondary: '#F18F01',
+  tertiary: '#048BA8',
+  quaternary: '#99C24D',
+  quinary: '#00100B',
 };
 
 const font = {

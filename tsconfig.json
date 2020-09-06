@@ -19,8 +19,7 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      "@components/content": ["components/content"],
-      "@components/molecules": ["components/molecules"],
+      "@components/*": ["components/*"],
       "@styles": ["styles"],
       "@utils": ["utils"],
       "@assets/svg": ["assets/svg"]
