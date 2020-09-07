@@ -1,5 +1,7 @@
 import React from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
+import {
+  SubmitHandler, useFieldArray, useForm,
+} from 'react-hook-form';
 import { Technology, Level } from '@models/quiz';
 
 interface Dropdown {
@@ -21,16 +23,17 @@ const levels: Dropdown[] = [
   { label: 'Senior', value: 'senior' },
 ];
 
-const Questionnaire = () => {
+const Questionnaire = ({ handleFormSubmit } :{handleFormSubmit: SubmitHandler<any>}) => {
   const { register, control, handleSubmit } = useForm();
   const { fields, append, remove } = useFieldArray({
     control,
     name: 'items',
   });
   const isMaximumFields = fields.length >= 5;
+  const isMinimumFields = fields.length < 1;
 
   return (
-    <form onSubmit={handleSubmit(console.log)}>
+    <form onSubmit={handleSubmit(handleFormSubmit)}>
       {fields.map(({
         id, tech, level,
       }, index) => (
@@ -58,7 +61,7 @@ const Questionnaire = () => {
       <button type="button" onClick={() => append({})} disabled={isMaximumFields}>
         Append
       </button>
-      <input type="submit" />
+      <input type="submit" disabled={isMinimumFields} />
     </form>
   );
 };
